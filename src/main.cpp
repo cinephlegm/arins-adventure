@@ -97,7 +97,7 @@ int main(void)
 		#pragma region MAIN
 
 				//make unique smart pointers of player and fade effect
-				std::unique_ptr player = (std::make_unique<Player>(1, beginner_spawn, 60, 3, beginner_map));
+				std::unique_ptr player = (std::make_unique<Player>(1.0f, beginner_spawn, 60.0f, 3, beginner_map));
 				std::unique_ptr fade = (std::make_unique<FadeEffect>(0.01f, [&map](Player& player) {HandleChangeLevel(player, map, map_four, map_four_spawn); }));
 
 		#pragma region AddNPC
@@ -179,7 +179,7 @@ int main(void)
 				events.push_back(std::make_shared<AbductionEvent>(Rectangle{ SWIDTH / 2 + 150, 50, 50,30 }, map_one, 1, [](Player& player) {
 					wasAbducted = true;
 					STATE = END_GAME;
-					}, 20));
+					}, 20.0f));
 
 				events.push_back(std::make_shared<TeleportEvent>(
 					Rectangle{ SWIDTH / 2, SHEIGHT / 2, static_cast<float>(texture.teleporter.width), static_cast<float>(texture.teleporter.height) },
