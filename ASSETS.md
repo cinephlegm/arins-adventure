@@ -8,8 +8,8 @@ The public source repository does not redistribute the original game's raw art, 
 
 Some environment art in the original project comes from the **Mana Seed** asset collection by **Seliel the Shaper**.
 
-- Summer Forest: https://seliel-the-shaper.itch.io/
-- Castle Dungeon: https://seliel-the-shaper.itch.io/
+- Summer Forest: https://seliel-the-shaper.itch.io/summer-forest
+- Castle Dungeon: https://seliel-the-shaper.itch.io/castle-dungeon
 
 The original project contains a Tiled tileset named `seasonal sample (summer)` and dungeon art consistent with those Mana Seed packs. Raw Mana Seed files are intentionally kept out of the public repository.
 
