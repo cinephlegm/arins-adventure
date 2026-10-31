@@ -33,3 +33,8 @@ Thumbs.db
 *.zip
 *.7z
 *.exe
+
+# Licensed runtime assets (kept outside the public source repository)
+audio/
+map/
+sprite/
