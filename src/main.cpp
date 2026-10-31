@@ -195,10 +195,10 @@ int main(void)
 
 		#pragma region Turrets
 				std::vector<std::shared_ptr<Turret>> turrets = std::vector<std::shared_ptr<Turret>>();
-				turrets.push_back(std::make_shared<Turret>(map_six, 0, texture.turretHead, texture.turretBase, Vector2{ SWIDTH - 140,SHEIGHT / 2 - 100 }, texture.bullet));
+				turrets.push_back(std::make_shared<Turret>(map_six, 0.0f, texture.turretHead, texture.turretBase, Vector2{ SWIDTH - 140,SHEIGHT / 2 - 100 }, texture.bullet));
 
-				turrets.push_back(std::make_shared<Turret>(map_seven, 0, texture.turretHead, texture.turretBase, Vector2{ 654,89 }, texture.bullet));
-				turrets.push_back(std::make_shared<Turret>(map_seven, 0, texture.turretHead, texture.turretBase, Vector2{ SWIDTH - 140,SHEIGHT / 2 - 100 }, texture.bullet));
+				turrets.push_back(std::make_shared<Turret>(map_seven, 0.0f, texture.turretHead, texture.turretBase, Vector2{ 654,89 }, texture.bullet));
+				turrets.push_back(std::make_shared<Turret>(map_seven, 0.0f, texture.turretHead, texture.turretBase, Vector2{ SWIDTH - 140,SHEIGHT / 2 - 100 }, texture.bullet));
 		#pragma endregion
 				//Load main spawn map for main game
 				loadLevel(map, beginner_map);
