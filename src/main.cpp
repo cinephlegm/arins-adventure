@@ -10,13 +10,10 @@
 #include "Character.h"
 #include "Turret.h"
 
-// IMPORTANT : https://youtu.be/jEC3YRDpCz4 : MY PRESENTATION VIDEO!
-
-
 int main(void)
 {
 
-	InitWindow(SWIDTH, SHEIGHT, "JOSEF MUSCAT 6.1A DGD TASK 2");
+	InitWindow(SWIDTH, SHEIGHT, "Arin's Adventure");
 	SetTargetFPS(FPS);
 
 	InitAudioDevice();
@@ -108,9 +105,9 @@ int main(void)
 				std::vector<std::shared_ptr<NPC>> NPCLIST = std::vector<std::shared_ptr<NPC>>();
 
 				//Add npc to list
-				NPCLIST.push_back(std::make_shared<BettyNPC>(1, Vector2{ 200,300 }, 150, Vector2{ 200,300 }, Vector2{ 500,300 }, spawn_area));
-				NPCLIST.push_back(std::make_shared<BettyNPC>(1, Vector2{ 450, 400 }, 100, Vector2{ 450,400 }, Vector2{ 500,600 }, spawn_area));
-				NPCLIST.push_back(std::make_shared<BettyNPC>(1, Vector2{ 500, 600 }, 100, Vector2{ 500,600 }, Vector2{ 700,600 }, spawn_area));
+				NPCLIST.push_back(std::make_shared<BettyNPC>(1.0f, Vector2{ 200,300 }, 150.0f, Vector2{ 200,300 }, Vector2{ 500,300 }, spawn_area));
+				NPCLIST.push_back(std::make_shared<BettyNPC>(1.0f, Vector2{ 450, 400 }, 100.0f, Vector2{ 450,400 }, Vector2{ 500,600 }, spawn_area));
+				NPCLIST.push_back(std::make_shared<BettyNPC>(1.0f, Vector2{ 500, 600 }, 100.0f, Vector2{ 500,600 }, Vector2{ 700,600 }, spawn_area));
 
 				//add pickables to list 
 				pickables.push_back(std::make_shared<HealthPotion>(texture.healthPotion, Vector2{ 220,950 }, map_five));
