@@ -1,39 +1,39 @@
-# Building Arin's Adventure
+# Building
 
 ## Requirements
 
 - Windows 10 or 11
-- Visual Studio 2022 with the Desktop development with C++ workload
+- Visual Studio with the Desktop development with C++ workload
 - CMake 3.24 or newer
 - Git
 
-raylib 5.0 is fetched automatically by CMake at the pinned commit used by this repository.
+raylib 5.0 is fetched automatically at the commit pinned in `CMakeLists.txt`.
 
-## Build
-
-From the repository root:
+## Compile
 
 ```powershell
 cmake -S . -B build -A x64
 cmake --build build --config Release --parallel
 ```
 
-The executable is written to:
+Output:
 
 ```text
 build/Release/ArinsAdventure.exe
 ```
 
-The game also needs the `audio`, `map`, and `sprite` directories beside the executable. The CMake build copies those directories automatically when they are present in the repository.
+## Runtime assets
 
-## Clean rebuild
+The executable expects these directories beside it:
 
-```powershell
-Remove-Item -Recurse -Force build
-cmake -S . -B build -A x64
-cmake --build build --config Release --parallel
+```text
+audio/
+map/
+sprite/
 ```
 
-## Notes
+They are intentionally excluded from the public repository because the original game uses third-party art with separate redistribution terms.
 
-The clean repository intentionally does not use the obsolete Box2D and fmt NuGet dependencies from the original coursework project because the game source does not use them.
+If you have an authorized local copy of the assets, place those three directories at the repository root before building. CMake copies them beside the executable automatically.
+
+Tagged release builds are assembled separately from the public source tree after asset-distribution checks.
