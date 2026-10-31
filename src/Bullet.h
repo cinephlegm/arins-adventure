@@ -10,12 +10,12 @@ private:
 	Rectangle hitbox;
 	Vector2 position;
 	Vector2 velocity;
-	float damage;
+	int damage;
 	Texture2D texture;
 	bool isActive;
 public:
 
-	Bullet(Vector2 pos, Vector2 vel, float dmg, Texture2D texture) :
+	Bullet(Vector2 pos, Vector2 vel, int dmg, Texture2D texture) :
 		position(pos), velocity(vel), damage(dmg), isActive(true), texture(texture) {
 		this->hitbox = { position.x,position.y,static_cast<float>(texture.width),static_cast<float>(texture.height) };
 	}
