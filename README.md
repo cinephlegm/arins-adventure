@@ -34,6 +34,3 @@ The public repository contains the game code but not the licensed runtime art/au
 
 `C++17` · `raylib 5.0` · `raygui` · `Tiled` · `Tileson`
 
-## License
-
-No project-wide license is granted. Third-party libraries retain their own licenses; see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
