@@ -17,7 +17,9 @@ Originally built in 2024 as a Game Mechanics project and later separated into th
 
 ## Download
 
-Windows builds are published through [GitHub Releases](../../releases) when a release is available.
+**Windows:** [Download the latest release](https://github.com/cinephlegm/arins-adventure/releases/latest).
+
+The release includes the playable Windows build and a SHA-256 checksum.
 
 ## Build
 
