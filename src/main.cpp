@@ -10,13 +10,10 @@
 #include "Character.h"
 #include "Turret.h"
 
-// IMPORTANT : https://youtu.be/jEC3YRDpCz4 : MY PRESENTATION VIDEO!
-
-
 int main(void)
 {
 
-	InitWindow(SWIDTH, SHEIGHT, "JOSEF MUSCAT 6.1A DGD TASK 2");
+	InitWindow(SWIDTH, SHEIGHT, "Arin's Adventure");
 	SetTargetFPS(FPS);
 
 	InitAudioDevice();
@@ -100,7 +97,7 @@ int main(void)
 		#pragma region MAIN
 
 				//make unique smart pointers of player and fade effect
-				std::unique_ptr player = (std::make_unique<Player>(1, beginner_spawn, 60, 3, beginner_map));
+				std::unique_ptr player = (std::make_unique<Player>(1.0f, beginner_spawn, 60.0f, 3, beginner_map));
 				std::unique_ptr fade = (std::make_unique<FadeEffect>(0.01f, [&map](Player& player) {HandleChangeLevel(player, map, map_four, map_four_spawn); }));
 
 		#pragma region AddNPC
@@ -108,9 +105,9 @@ int main(void)
 				std::vector<std::shared_ptr<NPC>> NPCLIST = std::vector<std::shared_ptr<NPC>>();
 
 				//Add npc to list
-				NPCLIST.push_back(std::make_shared<BettyNPC>(1, Vector2{ 200,300 }, 150, Vector2{ 200,300 }, Vector2{ 500,300 }, spawn_area));
-				NPCLIST.push_back(std::make_shared<BettyNPC>(1, Vector2{ 450, 400 }, 100, Vector2{ 450,400 }, Vector2{ 500,600 }, spawn_area));
-				NPCLIST.push_back(std::make_shared<BettyNPC>(1, Vector2{ 500, 600 }, 100, Vector2{ 500,600 }, Vector2{ 700,600 }, spawn_area));
+				NPCLIST.push_back(std::make_shared<BettyNPC>(1.0f, Vector2{ 200,300 }, 150.0f, Vector2{ 200,300 }, Vector2{ 500,300 }, spawn_area));
+				NPCLIST.push_back(std::make_shared<BettyNPC>(1.0f, Vector2{ 450, 400 }, 100.0f, Vector2{ 450,400 }, Vector2{ 500,600 }, spawn_area));
+				NPCLIST.push_back(std::make_shared<BettyNPC>(1.0f, Vector2{ 500, 600 }, 100.0f, Vector2{ 500,600 }, Vector2{ 700,600 }, spawn_area));
 
 				//add pickables to list 
 				pickables.push_back(std::make_shared<HealthPotion>(texture.healthPotion, Vector2{ 220,950 }, map_five));
@@ -182,7 +179,7 @@ int main(void)
 				events.push_back(std::make_shared<AbductionEvent>(Rectangle{ SWIDTH / 2 + 150, 50, 50,30 }, map_one, 1, [](Player& player) {
 					wasAbducted = true;
 					STATE = END_GAME;
-					}, 20));
+					}, 20.0f));
 
 				events.push_back(std::make_shared<TeleportEvent>(
 					Rectangle{ SWIDTH / 2, SHEIGHT / 2, static_cast<float>(texture.teleporter.width), static_cast<float>(texture.teleporter.height) },
@@ -198,10 +195,10 @@ int main(void)
 
 		#pragma region Turrets
 				std::vector<std::shared_ptr<Turret>> turrets = std::vector<std::shared_ptr<Turret>>();
-				turrets.push_back(std::make_shared<Turret>(map_six, 0, texture.turretHead, texture.turretBase, Vector2{ SWIDTH - 140,SHEIGHT / 2 - 100 }, texture.bullet));
+				turrets.push_back(std::make_shared<Turret>(map_six, 0.0f, texture.turretHead, texture.turretBase, Vector2{ SWIDTH - 140,SHEIGHT / 2 - 100 }, texture.bullet));
 
-				turrets.push_back(std::make_shared<Turret>(map_seven, 0, texture.turretHead, texture.turretBase, Vector2{ 654,89 }, texture.bullet));
-				turrets.push_back(std::make_shared<Turret>(map_seven, 0, texture.turretHead, texture.turretBase, Vector2{ SWIDTH - 140,SHEIGHT / 2 - 100 }, texture.bullet));
+				turrets.push_back(std::make_shared<Turret>(map_seven, 0.0f, texture.turretHead, texture.turretBase, Vector2{ 654,89 }, texture.bullet));
+				turrets.push_back(std::make_shared<Turret>(map_seven, 0.0f, texture.turretHead, texture.turretBase, Vector2{ SWIDTH - 140,SHEIGHT / 2 - 100 }, texture.bullet));
 		#pragma endregion
 				//Load main spawn map for main game
 				loadLevel(map, beginner_map);

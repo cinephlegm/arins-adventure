@@ -71,14 +71,14 @@ int loadTileMap(std::unique_ptr<tson::Map>& map, const char* levelDirectory) {
 		map = tileson.parse(levelDirectory);
 
 		if (map->getStatus() != tson::ParseStatus::OK) {
-			fmt::print("Error: Failed to load map '{}'\n", levelDirectory);
+			std::cerr << "Error: Failed to load map '" << levelDirectory << "'\n";
 			return -1;
 		}
 
 		current_map = levelDirectory;
 	}
 	catch (const std::exception& e) {
-		fmt::print("Exception occurred while loading map: {}\n", e.what());
+		std::cerr << "Exception occurred while loading map: " << e.what() << "\n";
 		return -1;
 	}
 	return 0;
@@ -88,7 +88,7 @@ int loadTileMap(std::unique_ptr<tson::Map>& map, const char* levelDirectory) {
 int loadTileMapAssets(std::unique_ptr<tson::Map>& map) {
 	try {
 		if (map->getTilesets().empty()) {
-			fmt::print("Error: Tileset not found in the map\n");
+			std::cerr << "Error: Tileset not found in the map\n";
 			return -1;
 		}
 
@@ -96,12 +96,12 @@ int loadTileMapAssets(std::unique_ptr<tson::Map>& map) {
 		tilesetTexture = LoadTexture(map->getTilesets()[0].getImage().u8string().c_str());
 
 		if (tilesetTexture.id == 0) {
-			fmt::print("Error: Tileset texture not loaded!\n");
+			std::cerr << "Error: Tileset texture not loaded!\n";
 			return -1;
 		}
 	}
 	catch (const std::exception& e) {
-		fmt::print("Exception occurred while loading tileset assets: {}\n", e.what());
+		std::cerr << "Exception occurred while loading tileset assets: " << e.what() << "\n";
 		return -1;
 	}
 	return 0;
@@ -122,7 +122,7 @@ void checkMapLayer(std::unique_ptr<tson::Map>& map)
 					// Check if the tile has a "collidable" property set to true
 					if (tileObject.getTile()->getProperties().hasProperty("collidable")) {
 						if (tileObject.getTile()->getProperties().getProperty("collidable")->getValue<bool>()) {
-							//fmt::print("Loading Collidable Object \n");
+							
 
 							std::string tag;
 							if (tileObject.getTile()->getProperties().hasProperty("tag")) {
@@ -177,22 +177,15 @@ void checkMapLayer(std::unique_ptr<tson::Map>& map)
 
 #pragma endregion
 
-//This just calls all the methods from the TEMPLATE code given to us to load the tile maps from the tmj file from tiled
-// return 0 if successful
+// Loads a Tiled map, its tileset texture, and collision data.
 int loadLevel(std::unique_ptr<tson::Map>& map, const char* levelDirectory)
 {
-	printf("LOADING TILE MAP \n");
-	if (loadTileMap(map, levelDirectory) == -1) return -1;
-	printf("SUCCESSFULLY LOADED TILE MAP \n");
-
-	printf("LOADING TILE MAP ASSETS \n");
-	if (loadTileMapAssets(map) == -1) return -1;
-	printf("SUCCESSFULLY LOADED TILE MAP ASSETS \n");
-
-	printf("CHECKING MAP LAYER \n");
-	checkMapLayer(map);
-	printf("SUCCESSFULLY CHECKED MAP LAYER \n");
-
+		if (loadTileMap(map, levelDirectory) == -1) return -1;
+	
+		if (loadTileMapAssets(map) == -1) return -1;
+	
+		checkMapLayer(map);
+	
 	return 0;
 }
 
@@ -292,8 +285,7 @@ void CheckCollidableCollision(Player& player, NPC& npc, std::unique_ptr<tson::Ma
 				#pragma region ChangeLevelCollision
 								if (collidable->tag == "CaveEntrance")
 								{
-									printf("ENTRANCE CAVE \n");
-
+									
 									if (current_map == map_one)
 									{
 
@@ -314,8 +306,7 @@ void CheckCollidableCollision(Player& player, NPC& npc, std::unique_ptr<tson::Ma
 								}
 								else if (collidable->tag == "DeeperEntrance")
 								{
-									printf("DEEPER ENTRANCE \n");
-
+									
 									if (current_map == map_two && objectiveProgress >= 3)
 									{
 										HandleChangeLevel(player, map, map_three, map_three_spawn);
@@ -548,7 +539,7 @@ void DrawObjectives(Textures textures, Vector2 shakeOffset)
 }
 
 
-//TEMPLATE CODE but i added shakeOffset so when shakescreen event happens it shakes rthe tiles 
+// Draws the active tile layer with the current screen-shake offset. 
 void DrawTile(std::unique_ptr<tson::Map>& map, Vector2 shakeOffset)
 {
 	for (auto& layer : map->getLayers()) {

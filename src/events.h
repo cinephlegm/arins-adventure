@@ -116,7 +116,7 @@ private:
 
 public:
 	AbductionEvent(Rectangle triggerBox, std::string map_occurance, int story_progression, std::function<void(Player&)> onCompletion,float abductionSpeed) : 
-		Events(triggerBox,map_occurance,story_progression,onCompletion), abductionSpeed(abductionSpeed),abductor(std::make_unique<BettyNPC>(1, Vector2{ 9999,9999 }, 150, Vector2{ 9999,9999 }, Vector2{ 9999,9999 }, map_one)) {}
+		Events(triggerBox,map_occurance,story_progression,onCompletion), abductionSpeed(abductionSpeed),abductor(std::make_unique<BettyNPC>(1.0f, Vector2{ 9999,9999 }, 150.0f, Vector2{ 9999,9999 }, Vector2{ 9999,9999 }, map_one)) {}
 
 	void EventTrigger(Player& player) override
 	{

@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Includes.h"
 
-//TEMPlATE CODE!
+// Collision primitives adapted from coursework starter code.
 
 
 class Collidable;
